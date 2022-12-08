@@ -7,8 +7,8 @@
 #trigger:
 #- main
 
-pool:
-  vmImage: ubuntu-latest
+pool: "Default"
+  #vmImage: ubuntu-latest
 #Etapas a ejecutar el Pipeline
 steps:
 - script: echo Hello, world!
