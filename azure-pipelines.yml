@@ -7,7 +7,7 @@
 #trigger:
 #- main
 
-pool: "default"
+pool: 'default'
   #vmImage: ubuntu-latest
 #Etapas a ejecutar el Pipeline
 steps:
