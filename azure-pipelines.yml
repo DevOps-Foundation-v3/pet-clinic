@@ -2,12 +2,33 @@
 pool: 'Default'
 
 steps:
+#- task: Gradle@3
+  #inputs:
+    #gradleWrapperFile: 'gradlew'
+    #tasks: 'build'
+    #publishJUnitResults: true
+    #testResultsFiles: '**/TEST-*.xml'
+    #javaHomeOption: 'JDKVersion'
+    #sonarQubeRunAnalysis: false
+    #spotBugsAnalysis: false
+
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'Sonarcloud'
+    organization: 'devops-foundation-v3'
+    projectKey: 'DevOps-Foundation-v3_pet-clinic'
+    projectName: 'pet-clinic'
+    projectVersion: '2.6.0'
+  displayName: Prepare SonarCloud Analysis
+
 - task: Gradle@3
   inputs:
     gradleWrapperFile: 'gradlew'
-    tasks: 'build'
+    tasks: 'sonarqube'
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
-    sonarQubeRunAnalysis: false
+    sonarQubeRunAnalysis: true
+    sqGradlePluginVersionChoice: 'specify'
+    sonarQubeGradlePluginVersion: '3.3'
     spotBugsAnalysis: false
