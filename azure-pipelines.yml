@@ -16,9 +16,12 @@ steps:
   inputs:
     SonarCloud: 'Sonarcloud'
     organization: 'devops-foundation-v3'
-    projectKey: 'DevOps-Foundation-v3_pet-clinic'
-    projectName: 'pet-clinic'
-    projectVersion: '2.6.0'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'DevOps-Foundation-v3_pet-clinic'
+    cliProjectName: 'pet-clinic'
+    cliProjectVersion: '2.6.0'
+    cliSources: '.'
   displayName: Prepare SonarCloud Analysis
 
 - task: Gradle@3
