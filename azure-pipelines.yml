@@ -1,5 +1,6 @@
 
-pool: 'Default'
+pool:
+  vmImage: ubuntu-latest
 
 steps:
 #- task: Gradle@3
@@ -16,7 +17,8 @@ steps:
   inputs:
     SonarCloud: 'Sonarcloud'
     organization: 'devops-foundation-v3'
-    scannerMode: 'Other'
+    projectKey: 'DevOps-Foundation-v3_pet-clinic'
+    projectName: 'pet-clinic'
   displayName: Prepare SonarCloud Analysis
 
 - task: Gradle@3
@@ -30,3 +32,4 @@ steps:
     sqGradlePluginVersionChoice: 'specify'
     sonarQubeGradlePluginVersion: '3.3'
     spotBugsAnalysis: false
+  displayName: SonarCloud Analysis
