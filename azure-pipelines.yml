@@ -17,6 +17,6 @@ steps:
     jdkArchitectureOption: 'x64'
     sonarQubeRunAnalysis: false
     spotBugsAnalysis: false
-    checkStyleRunAnalysis: 
+   
 
    
