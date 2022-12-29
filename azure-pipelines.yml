@@ -1,72 +1,10 @@
 
-pool:
-  vmImage: ubuntu-latest
+pool: 'Default'
 
 steps:
-- task: Gradle@3
-  inputs:
-    gradleWrapperFile: 'gradlew'
-    tasks: 'build'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    sonarQubeRunAnalysis: false
-    spotBugsAnalysis: false
-  displayName: Build proyecto
-
-#- task: SonarCloudPrepare@1
-  #inputs:
-    #SonarCloud: 'Sonarcloud'
-    #organization: 'devops-foundation-v3'
-    #projectKey: 'DevOps-Foundation-v3_pet-clinic'
-    #projectName: 'pet-clinic'
-  #displayName: Prepare SonarCloud Analysis
-
-#- task: Gradle@3
-    #gradleWrapperFile: 'gradlew'
-  #inputs:
-    #publishJUnitResults: true
-    #tasks: 'sonarqube'
-    #testResultsFiles: '**/TEST-*.xml'
-    #javaHomeOption: 'JDKVersion'
-    #sonarQubeRunAnalysis: true
-    #sqGradlePluginVersionChoice: 'specify'
-    #sonarQubeGradlePluginVersion: '3.3'
-    #spotBugsAnalysis: false
-  #displayName: SonarCloud Analysis
-
-- task: Docker@2
-  inputs:
-    containerRegistry: 'docker'
-    command: 'login'
-  displayName: Docker Login
-
-- task: Docker@2
-  inputs:
-    containerRegistry: 'docker'
-    repository: 'clagosu/pet-clinic'
-    command: 'build'
-    Dockerfile: '**/Dockerfile'
-    tags: 'latest'
-  displayName: Docker Build Image
-
-- task: Docker@2
-  inputs:
-    containerRegistry: 'docker'
-    repository: 'clagosu/pet-clinic'
-    command: 'push'
-    tags: 'latest'
-  displayName: Docker push
-
-- task: KubectlInstaller@0
-  inputs:
-    kubectlVersion: 'latest'
-
 - task: Kubernetes@1
   inputs:
     connectionType: 'None'
     namespace: 'default'
     command: 'apply'
     arguments: '-f deployment-app.yaml'
-    secretType: 'dockerRegistry'
-    containerRegistryType: 'Azure Container Registry'
