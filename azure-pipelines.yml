@@ -55,7 +55,7 @@ steps:
     sonarQubeGradlePluginVersion: '3.3'
     spotBugsAnalysis: false
   displayName: SonarCloud Analysis
-
+#Buscar como comunicarme con mi local.....
 - task: Docker@2
   inputs:
     containerRegistry: 'DockerRegistro'
@@ -78,3 +78,7 @@ steps:
     command: 'push'
     tags: 'latest'
   displayName: Docker push
+
+- task: KubectlInstaller@0
+  inputs:
+     kubectlVersion: 'latest'
