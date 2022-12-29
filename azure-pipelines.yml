@@ -31,13 +31,25 @@ steps:
     sonarQubeRunAnalysis: false
     spotBugsAnalysis: false
     
-- task: SonarCloudPrepare@1e
-  inputs: 
+
+- task: SonarCloudPrepare@1
+  inputs:
     SonarCloud: 'SonarCloud_DevFoundation'
-    organization: 'devops-foundation-v3'
+    organization: 'cristianvasquezm'
+    scannerMode: 'MSBuild'
     projectKey: 'CristianVasquezM_DevOps-Foundation-v3_Lab'
     projectName: 'cristianvasquezm'
+    projectVersion: '2.0'
   displayName: Prepare SonarCloud Analysis
+
+#appendCommitMessageToRunName:
+#- task: SonarCloudPrepare@1e
+#  inputs: 
+#    SonarCloud: 'SonarCloud_DevFoundation'
+ #   organization: 'devops-foundation-v3'
+ #   projectKey: 'CristianVasquezM_DevOps-Foundation-v3_Lab'
+ #   projectName: 'cristianvasquezm'
+ # displayName: Prepare SonarCloud Analysis
   
 - task: Gradle@3
   inputs:
