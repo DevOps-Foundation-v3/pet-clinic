@@ -1,5 +1,4 @@
 # Starter pipeline
-- task: SonarCloudAnalyze@1
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -31,14 +30,14 @@ steps:
     jdkVersionOption: '1.11'
     sonarQubeRunAnalysis: false
     spotBugsAnalysis: false
-
-- task: SonarCloudPrepare@1
-  inputs:
+    
+- task: SonarCloudPrepare@1e
+  inputs: 
     SonarCloud: 'SonarCloud_DevFoundation'
     organization: 'devops-foundation-v3'
-    scannerMode: 'MSBuild'
     projectKey: 'CristianVasquezM_DevOps-Foundation-v3_Lab'
     projectName: 'cristianvasquezm'
+  displayName: Prepare SonarCloud Analysis
   
 - task: Gradle@3
   inputs:
