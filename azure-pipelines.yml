@@ -1,0 +1,84 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+#Indica que solo se ejecute en rama Main
+#Lo sacamos
+#trigger:
+#- main
+
+pool: 'default'
+  #vmImage: ubuntu-latest
+#Etapas a ejecutar el Pipeline
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+ 
+#- script: |
+#    echo Add other tasks to build, test, and deploy your project.
+#    echo See https://aka.ms/yaml
+#  displayName: 'Run a multi-line script'
+
+#EJECUTAR CON GRADLE se ejecuta x Tasks de forma de vista
+- task: Gradle@3
+  inputs:
+    gradleWrapperFile: 'gradlew'
+    tasks: 'build'
+    publishJUnitResults: true
+    testResultsFiles: '**/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.11'
+    sonarQubeRunAnalysis: false
+    spotBugsAnalysis: false
+    
+
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'SonarCloud_DevFoundation'
+    organization: 'cristianvasquezm'
+    scannerMode: 'MSBuild'
+    projectKey: 'CristianVasquezM_DevOps-Foundation-v3_Lab'
+    projectName: 'cristianvasquezm'
+    projectVersion: '2.0'
+  displayName: Prepare SonarCloud Analysis
+
+  
+- task: Gradle@3
+  inputs:
+    gradleWrapperFile: 'gradlew'
+    tasks: 'sonarqube'
+    publishJUnitResults: true
+    testResultsFiles: '**/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    sonarQubeRunAnalysis: true
+    sqGradlePluginVersionChoice: 'specify'
+    sonarQubeGradlePluginVersion: '3.3'
+    spotBugsAnalysis: false
+  displayName: SonarCloud Analysis
+#Buscar como comunicarme con mi local.....
+- task: Docker@2
+  inputs:
+    containerRegistry: 'DockerRegistro'
+    command: 'login'
+  displayName: Docker Login
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'DockerRegistro'
+    repository: 'nitracis/petclinicTes2'
+    command: 'build'
+    Dockerfile: '**/Dockerfile'
+    tags: 'latest'
+  displayName: Docker Build Image
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'DockerRegistro'
+    repository: 'nitracis/petclinicTes2'
+    command: 'push'
+    tags: 'latest'
+  displayName: Docker push
+
+- task: KubectlInstaller@0
+  inputs:
+     kubectlVersion: 'latest'
