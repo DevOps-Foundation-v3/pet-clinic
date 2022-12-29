@@ -42,14 +42,6 @@ steps:
     projectVersion: '2.0'
   displayName: Prepare SonarCloud Analysis
 
-#appendCommitMessageToRunName:
-#- task: SonarCloudPrepare@1e
-#  inputs: 
-#    SonarCloud: 'SonarCloud_DevFoundation'
- #   organization: 'devops-foundation-v3'
- #   projectKey: 'CristianVasquezM_DevOps-Foundation-v3_Lab'
- #   projectName: 'cristianvasquezm'
- # displayName: Prepare SonarCloud Analysis
   
 - task: Gradle@3
   inputs:
@@ -83,7 +75,7 @@ steps:
 - task: Docker@2
   inputs:
     containerRegistry: 'docker'
-    repository: 'pet-clinic'
+    repository: 'nitracis/petclinicTes2'
     command: 'push'
     tags: 'latest'
   displayName: Docker push
