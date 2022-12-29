@@ -22,7 +22,7 @@ steps:
   inputs:
     SonarCloud: 'Sonarcloud'
     organization: 'devops-foundation-l'
-    projectKey: 'DevOps-Foundation-v3_pet-clinic'
+    projectKey: 'devops.azure'
     projectName: 'pet-clinic'
   displayName: Prepare SonarCloud Analysis
 
