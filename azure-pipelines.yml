@@ -39,4 +39,3 @@ steps:
     scannerMode: 'MSBuild'
     projectKey: 'CristianVasquezM_DevOps-Foundation-v3_Lab'
     projectName: 'cristianvasquezm'
-    displayName: Prepare SonarCloud Analysis
