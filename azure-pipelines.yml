@@ -65,3 +65,25 @@ steps:
   displayName: SonarCloud Analysis
   
   
+- task: Docker@2
+  inputs:
+    containerRegistry: 'docker'
+    command: 'login'
+  displayName: Docker Login
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'docker'
+    repository: 'pet-clinic'
+    command: 'build'
+    Dockerfile: '**/Dockerfile'
+    tags: 'latest'
+  displayName: Docker Build Image
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'docker'
+    repository: 'pet-clinic'
+    command: 'push'
+    tags: 'latest'
+  displayName: Docker push
