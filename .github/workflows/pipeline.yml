@@ -1,19 +1,24 @@
-name: Java CI 
+name: Java CI - rodam 
 
-on: [push]
-
+on:
+  workflow_call:
+   
 jobs:
+
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-  
-    - name: Checkout
+ 
+    - name: Chechout
       uses: actions/checkout@v3.5.3
      
-    - name: Descarga Codigo
-      run: ls -l
-
-    - name: hola mundo
-      run: echo "hola mundo"
+    - name: Setup Java JDK
+      uses: actions/setup-java@v3.12.0
+      with:
+       java-version: '11'
+       distribution: 'zulu'
+       
+    - name: compile Gradle
+      run: |
+       chmod +x gradlew
+       ./gradlew build
