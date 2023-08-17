@@ -3,5 +3,5 @@ name: Java CI - pipeline.yml rama pet-clinic
 on: [push]
    
 jobs:
-  call-pipeline:
+  call-pipe:
     uses: r4nd7/devops-pipe-rodo/.github/workflows/main.yml@feature-pipe-rodo
