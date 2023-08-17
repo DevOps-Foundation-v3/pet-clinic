@@ -4,4 +4,4 @@ on: [push]
    
 jobs:
   call-pipeline:
-    uses: devops-pipe-rodo/.github/workflows/main.yml@feature-pipe-rodo
+    uses: Rodam/devops-pipe-rodo/.github/workflows/main.yml@feature-pipe-rodo
