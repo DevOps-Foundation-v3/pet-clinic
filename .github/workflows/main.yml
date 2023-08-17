@@ -1,6 +1,6 @@
 name: Java CI - rodam v2 main
 
-on: [push]
+#on: [push]
    
 jobs:
   call-pipeline:
