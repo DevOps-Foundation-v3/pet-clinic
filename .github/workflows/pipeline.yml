@@ -1,4 +1,4 @@
-name: Java CI - pipeline.yml
+name: Java CI - pipeline.yml rama pet-clinic
 
 on: [push]
    
