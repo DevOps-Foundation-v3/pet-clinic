@@ -1,10 +1,11 @@
-name: Java CI - rodam v3
+name: Java CI - rodam v1
 
 on:
  workflow_call:
    
 jobs:
- build:
+
+  build:
     runs-on: ubuntu-latest
     steps:
  
@@ -21,5 +22,3 @@ jobs:
       run: |
        chmod +x gradlew
        ./gradlew build
-        
-  
