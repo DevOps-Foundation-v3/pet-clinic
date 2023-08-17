@@ -1,11 +1,10 @@
-name: Java CI - rodam 
+name: Java CI - rodam v3
 
 on:
-  workflow_call:
+ workflow_call:
    
 jobs:
-
-  build:
+ build:
     runs-on: ubuntu-latest
     steps:
  
