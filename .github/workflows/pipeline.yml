@@ -1,6 +1,7 @@
 name: Java CI 
 
-on: [push]
+on: 
+   workflow call
  jobs:
   build:
     runs-on: ubuntu-latest
