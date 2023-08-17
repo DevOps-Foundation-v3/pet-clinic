@@ -1,7 +1,7 @@
 name: Java CI - rodam 
 
-on: 
-   workflow_call:
+on:
+  workflow_call:
    
 jobs:
 
