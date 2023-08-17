@@ -12,5 +12,7 @@ on: [push]
       uses: actions/checkout@v3.5.3
      
     - name: Descarga Codigo
-        
-    - run: ls -l
+      run: ls -l
+
+    - name: hola mundo
+      run: echo "hola mundo"
