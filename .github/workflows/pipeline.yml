@@ -16,9 +16,9 @@ on:
        distribution: 'zulu'
        java-version: '11'
 
-    - name: compile maven
-      run: 
-       chmod +x mvnw
-       ./mvnw clean compile
+    - name: compile Gradle
+      run: |
+       chmod +x gradlew
+       ./gradlew build
         
   
