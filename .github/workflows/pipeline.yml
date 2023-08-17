@@ -3,7 +3,7 @@ name: Java CI
 on: 
    workflow call:
    
- jobs:
+jobs:
    build:
     runs-on: ubuntu-latest
     steps:
