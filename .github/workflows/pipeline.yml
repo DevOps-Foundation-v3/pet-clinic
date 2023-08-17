@@ -1,4 +1,4 @@
-name: Java CI - rodam 
+name: Java CI - rodam v1
 
 on:
   workflow_call:
