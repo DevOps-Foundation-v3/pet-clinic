@@ -21,4 +21,4 @@ jobs:
     - name: compile Gradle
       run: |
        chmod +x gradlew
-       ./gradlew build
+       ./gradlew sonar -Dsonar.token= ${{ secrets.token_sonarcloud }}
